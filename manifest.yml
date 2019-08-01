@@ -4,7 +4,7 @@ applications:
   timeout: 180
   name: productsinventory
   buildpack: java_buildpack
-  path: ./target/springwebapp-1.0-SNAPSHOT.jar
+  path: ./target/productsinventory-1.0-SNAPSHOT.jar
   memory: 1024M
   domain: not-used.net
   host: not-used

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+<title>Welcome to Product Store</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link
+	href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+	th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
+	rel="stylesheet" media="screen" />
+
+<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
+	th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+
+<link href="../static/css/guru.css" th:href="@{/css/guru.css}"
+	rel="stylesheet" media="screen" />
+</head>
+<body>
+	<div class="container">
+		<div th:fragment="header">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="#" th:href="@{/}">Home</a>
+						<ul class="nav navbar-nav">
+							<li><a href="#" th:href="@{/products}">Products</a></li>
+							<li><a href="#" th:href="@{/product/new}">Create Product</a></li>
+						</ul>
+
+					</div>
+				</div>
+			</nav>
+		</div>
+		<div th:if="${not #lists.isEmpty(products)}">
+			<h2>Product List</h2>
+			<table class="table table-striped">
+				<tr>
+					<th>Id</th>
+					<th>Product Id</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th>View</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+				<tr th:each="product : ${products}">
+					<td th:text="${product.id}"><a href="/product/${product.id}">Id</a></td>
+					<td th:text="${product.productId}">Product Id</td>
+					<td th:text="${product.description}">description</td>
+					<td th:text="${product.price}">price</td>
+					<td><a th:href="${ '/product/' + product.id}">View</a></td>
+					<td><a th:href="${'/product/edit/' + product.id}">Edit</a></td>
+					<td><a th:href="${'/product/delete/' + product.id}">Delete</a></td>
+				</tr>
+			</table>
+
+		</div>
+	</div>
+
+</body>
+</html>
