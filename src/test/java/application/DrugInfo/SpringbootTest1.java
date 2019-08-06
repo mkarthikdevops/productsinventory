@@ -11,14 +11,15 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class SpringbootTest1 {
 	private WebDriver driver;
 
+	@Parameters({"url"})
 	@Test
-	public void test() throws InterruptedException {
+	public void test(String url) throws InterruptedException {
 		
 		
 	 System.setProperty("wdm.chromeDriverVersion", "75.0.3770.140");
 	 WebDriverManager.chromedriver().setup();
 	 driver = new ChromeDriver();
-	 driver.get("http://localhost:8020");
+	 driver.get(url);
 	 driver.manage().window().maximize();
 	 driver.findElement(By.xpath("/html/body/div/nav/div/div/ul/li[2]/a")).click();
 	 driver.findElement(By.xpath("//*[@id=\"productId\"]")).sendKeys("13");	
